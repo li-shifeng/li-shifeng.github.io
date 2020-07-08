@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
     <title></title>
     <style>
       html {
@@ -15,20 +18,18 @@
         justify-content: center;
         align-items: center;
         perspective: 1500px;
-        background-image: url(./img/bg.jpg);
-        background-repeat: no-repeat;
-        background-position: center;
+        background: url(./img/bg.jpg) center no-repeat;
         background-size: cover;
       }
       main {
-        width: 600px;
-        height: 600px;
+        width: 250px;
+        height: 250px;
         transform-style: preserve-3d;
         animation: 20s spin1 linear infinite;
       }
       section {
-        width: 600px;
-        height: 600px;
+        width: 250px;
+        height: 250px;
         transform-style: preserve-3d;
         animation: 10s spin2 linear infinite;
       }
@@ -37,35 +38,44 @@
         width: 100%;
         height: 100%;
         background-size: 100%;
-        border: 1px solid black;
+        border: 1px solid rgb(231, 215, 231);
       }
       .font {
         background-image: url(./img/1.jpg);
-        transform: translateZ(300px);
+        transform: translateZ(125px);
       }
       .back {
-        background-image: url(./img/1.jpg);
-        transform: translateZ(-300px);
+        background-image: url(./img/2.jpg);
+        transform: translateZ(-125px);
       }
-
       .left {
-        background-image: url(./img/1.jpg);
-        transform: rotateY(90deg) translateZ(-300px);
+        background-image: url(./img/3.jpg);
+        transform: rotateY(90deg) translateZ(-125px);
       }
       .right {
-        background-image: url(./img/1.jpg);
-        transform: rotateY(90deg) translateZ(300px);
+        background-image: url(./img/4.jpg);
+        transform: rotateY(90deg) translateZ(125px);
       }
-
       .top {
-        background-image: url(./img/1.jpg);
-        transform: rotateX(90deg) translateZ(-300px);
+        background-image: url(./img/5.jpg);
+        transform: rotateX(90deg) translateZ(-125px);
       }
       .bottom {
-        background-image: url(./img/1.jpg);
-        transform: rotateX(90deg) translateZ(300px);
+        background-image: url(./img/6.jpg);
+        transform: rotateX(90deg) translateZ(125px);
       }
-
+      .play-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 1px solid #fff;
+        background: url(./img/bg-bgm.jpg) center no-repeat;
+        background-size: cover;
+        animation: rotate 10s linear infinite;
+      }
       @keyframes spin1 {
         0% {
           transform: rotateX(0);
@@ -82,6 +92,14 @@
           transform: rotateY(360deg);
         }
       }
+      @keyframes rotate {
+        0% {
+          transform: rotateZ(0);
+        }
+        100% {
+          transform: rotateZ(360deg);
+        }
+      }
     </style>
   </head>
   <body>
@@ -95,6 +113,13 @@
         <div class="bottom"></div>
       </section>
     </main>
-    <audio src="./music/bgm.mp3" autoplay loop></audio>
+
+    <div class="play-btn" onclick="playBGM()"></div>
+    <audio src="./music/bgm.mp3" autoplay loop style="display: none;"></audio>
+    <script>
+      function playBGM() {
+        document.getElementsByTagName('audio')[0].play()
+      }
+    </script>
   </body>
 </html>
